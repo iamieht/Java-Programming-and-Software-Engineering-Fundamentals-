@@ -1,0 +1,12 @@
+body {
+  background-color: lightgray;
+}
+
+h1,h2 {
+  color: gray;
+}
+
+canvas {
+  border: 1px solid gray;
+  height: 300px;
+}
