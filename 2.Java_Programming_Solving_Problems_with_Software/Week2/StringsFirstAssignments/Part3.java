@@ -19,6 +19,18 @@ public class Part3 {
         }
         return result;
     }
+    public String lastPart(String stringa, String stringb) {
+        
+        int startIndex = stringb.indexOf(stringa);
+        String result = "";
+        
+        if (startIndex == -1) {
+            result = stringb;
+        } else {
+            result = stringb.substring(startIndex + stringa.length());
+        }
+        return result;
+    }
     
     public void testing() {
     
@@ -42,6 +54,16 @@ public class Part3 {
         System.out.println("Stringb is " + stringb);
         isStringaInStringbTwice = twoOccurrences(stringa, stringb);
         System.out.println("isStringaInStringbTwice " + isStringaInStringbTwice);
+        
+        stringa = "an";
+        stringb = "banana";
+        String lastPart = lastPart(stringa, stringb);
+        System.out.println("The part of the string after " + stringa + " in " + stringb + " is " + lastPart);
+        
+        stringa = "zoo";
+        stringb = "forest";
+        lastPart = lastPart(stringa, stringb);
+        System.out.println("The part of the string after " + stringa + " in " + stringb + " is " + lastPart);
     }
 
 }
