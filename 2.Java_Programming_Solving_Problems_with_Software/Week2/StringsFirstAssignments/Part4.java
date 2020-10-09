@@ -9,9 +9,23 @@ public class Part4 {
     
     public String printYoutubeURLs(String url) {
         URLResource ur = new URLResource(url);
+        String word2find = "youtube.com";
+        String quote = "\"";
+        String wordTemp = "";
+        int startIndex = 0;
+        String result = "";
+        
         
         for (String word : ur.words()) {
-            System.out.println(word);
+            wordTemp = word.toLowerCase();
+            startIndex = wordTemp.indexOf(word2find);
+            if (startIndex != -1) {
+                result = word.substring(word.indexOf(quote), word.indexOf(quote, startIndex+11)+1);
+                //System.out.println("Original Word " + word);
+                //System.out.println("Modified Word " + wordTemp);
+                System.out.println("URL " + result);
+            }
+            
         }
         return "";
     }
