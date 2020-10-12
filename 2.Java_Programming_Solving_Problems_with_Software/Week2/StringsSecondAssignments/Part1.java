@@ -92,6 +92,11 @@ public class Part1 {
         gene = findGene(dna);
         System.out.println("Gene is " + gene);
         
+        dna = "AATGCTAACTAGCTGACTAAT";
+        System.out.println("DNA strand is " + dna);
+        gene = findGene(dna);
+        System.out.println("Gene is " + gene);
+        
     }
     
 }
