@@ -23,6 +23,36 @@ public class Part1 {
         return dna.length();
     }
     
+    public String findGene(String dna) {
+        int startIndex = dna.indexOf("ATG");
+        if (startIndex == -1) {
+            return "";
+        }
+        int taaIndex = findStopCodon(dna,startIndex,"TAA");
+        int tagIndex = findStopCodon(dna,startIndex,"TAG");
+        int tgaIndex = findStopCodon(dna,startIndex,"TGA");
+        int temp = Math.min(taaIndex,tagIndex);
+        int minIndex = Math.min(temp,tgaIndex);
+        if (minIndex == dna.length()) {
+            return "";
+        }
+        return dna.substring(startIndex,minIndex + 3);
+    }
+    
+    public void printAllGenes(String dna) {
+        int startIndex = 0;
+        
+        while (true) {
+            String currentGene = findGene(dna);
+            
+            if (currentGene.isEmpty()) {
+                break;
+            }
+            System.out.println(currentGene);
+            startIndex = dna.indexOf(currentGene, startIndex) + currentGene.length();
+        }
+    }
+    
     public void testFindStopCodon() {
         String dna = "xxxyyyzzzTAAxxxyyyzzzTAAxx";
         int dex = findStopCodon(dna,0,"TAA");
@@ -35,5 +65,33 @@ public class Part1 {
         if (dex != 26) System.out.println("error on 26 TAG");
         System.out.println("tests finished");
     }
-
+    
+    public void testFindGene() {
+        String dna = "ATGCCCGGGAAATAACCC";
+        System.out.println("DNA strand is " + dna);
+        String gene = findGene(dna);
+        System.out.println("Gene is " + gene);
+        
+        dna = "CGATGGTTGATAAGCCTAAGCTATAA";
+        System.out.println("DNA strand is " + dna);
+        gene = findGene(dna);
+        System.out.println("Gene is " + gene);
+        
+        dna = "AATGCGTAATTAATCG";
+        System.out.println("DNA strand is " + dna);
+        gene = findGene(dna);
+        System.out.println("Gene is " + gene);
+        
+        dna = "CGATGGTTGATAAGCCTAAGCTAAA";
+        System.out.println("DNA strand is " + dna);
+        gene = findGene(dna);
+        System.out.println("Gene is " + gene);
+        
+        dna = "ATGATCATAAGAAGATAATAGAGGGCCATGTAA";
+        System.out.println("DNA strand is " + dna);
+        gene = findGene(dna);
+        System.out.println("Gene is " + gene);
+        
+    }
+    
 }
