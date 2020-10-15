@@ -101,6 +101,17 @@ public class Part3 {
       return dnaListRatio;
     }
     
+    public int countCTG(String dna) {
+        int currIndex = dna.indexOf("CTG", 0);
+        int total = 0;
+        while (currIndex != -1) {
+            total++;
+            currIndex = dna.indexOf("CTG", currIndex + 3);
+            }
+            
+        return total;
+    }
+    
     public void testProcessGenes() {
         StorageResource sr = new StorageResource();
         sr.add("ATGATCTAATTTATGCTGCAACGGTGAAGA");
@@ -113,13 +124,28 @@ public class Part3 {
     }
     
     public void testProcessGenesFile() {
-        FileResource fr = new FileResource("brca1line.fa");
+        //FileResource fr = new FileResource("brca1line.fa");
+        FileResource fr = new FileResource("GRch38dnapart.fa");
         String dna = fr.asString();
         dna = dna.toUpperCase();
         //System.out.println(dna);
         StorageResource allGenes = getAllGenes(dna);
-        System.out.println(allGenes.data());
+        //System.out.println(allGenes.size());
         //processGenes(allGenes, 60, 0.35);
-        
+        int longestDna = 0;
+        for (String item: allGenes.data()) {
+            if (item.length() > longestDna) {
+                longestDna = item.length();
+            }
+        }
+        System.out.println("Longest gene " + longestDna);
+    }
+    
+    public void testCount() {
+        //String dna = "CTGCTGCTGAAA";
+        FileResource fr = new FileResource("GRch38dnapart.fa");
+        String dna = fr.asString();
+        dna = dna.toUpperCase();
+        System.out.println("Total CTG are: " + countCTG(dna));
     }
 }
