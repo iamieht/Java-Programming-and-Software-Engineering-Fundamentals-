@@ -55,21 +55,21 @@ public class Part3 {
         return geneList;
     }
     
-    public void processGenes(StorageResource sr) {
-        StorageResource dnaList9 = longerThan(sr, 9);
-        StorageResource dnaListRatio = cgRatio(sr, 0.35);
+    public void processGenes(StorageResource sr, int length, double ratio) {
+        StorageResource dnaList9 = longerThan(sr, length);
+        StorageResource dnaListRatio = cgRatio(sr, ratio);
         
-        System.out.println("DNA strands longer than 9 characters:");
+        System.out.println("DNA strands longer than " + length + " characters:");
         for (String dna: dnaList9.data()) {
             System.out.println(dna);
         }
-        System.out.println("There is a total of " + dnaList9.size() + " DNA strands longer than 9 characters");
+        System.out.println("There is a total of " + dnaList9.size() + " DNA strands longer than " + length + " characters");
         System.out.println("################################################################################");
         System.out.println("DNA strands whose C-G-ratio is higher than 0.35 are:");
         for (String dna: dnaListRatio.data()) {
             System.out.println(dna);
         }
-        System.out.println("There is a total of " + dnaListRatio.size() + " DNA strands whose C-G-ratio is higher than 0.35");
+        System.out.println("There is a total of " + dnaListRatio.size() + " DNA strands whose C-G-ratio is higher than " + ratio);
     }
     
     public StorageResource longerThan(StorageResource sr, int length){
@@ -108,11 +108,18 @@ public class Part3 {
         sr.add("ATGCCCGGGAAATAACCC");
         sr.add("CGATGGTTGATAAGCCTAAGCTATAA");
         sr.add("ATGCCATAG");
-        processGenes(sr);
+        //processGenes(sr, 9, 0.35);
+        System.out.println(sr.data());
     }
     
     public void testProcessGenesFile() {
         FileResource fr = new FileResource("brca1line.fa");
+        String dna = fr.asString();
+        dna = dna.toUpperCase();
+        //System.out.println(dna);
+        StorageResource allGenes = getAllGenes(dna);
+        System.out.println(allGenes.data());
+        //processGenes(allGenes, 60, 0.35);
         
     }
 }
