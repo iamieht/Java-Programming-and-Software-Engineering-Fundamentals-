@@ -18,10 +18,27 @@ public class WhichCountriesExport {
             }
         }
     }
+    public String countryInfo(CSVParser parser, String country) {
+        String fullRecord = "";
+        for(CSVRecord record : parser) {
+            String countryColumn = record.get("Country");
+            if (countryColumn.contains(country)) {
+                String export = record.get("Exports");
+                String value = record.get("Value (dollars)");
+                return country + ": " + export + ": " + value;
+            }
+        }
+        return "NOT FOUND";
+    }
     public void whoExportsCoffee() {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
         listExporters(parser, "coffee");
     }
-
+    public void tester() {
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        String fullRecord = countryInfo(parser, "Germany");
+        System.out.println(fullRecord);
+    }
 }
