@@ -1,3 +1,33 @@
 #BlueJ package file
-#Fri Oct 23 17:45:25 CEST 2020
+editor.fx.0.height=1048
+editor.fx.0.width=1414
+editor.fx.0.x=2261
+editor.fx.0.y=316
+objectbench.height=186
+objectbench.width=1167
+package.divider.horizontal=0.6
+package.divider.vertical=0.7035330261136713
+package.editor.height=451
+package.editor.width=1061
+package.editor.x=2442
+package.editor.y=133
+package.frame.height=770
+package.frame.width=1209
+package.numDependencies=0
+package.numTargets=1
+package.showExtends=true
+package.showUses=true
 project.charset=UTF-8
+readme.height=58
+readme.name=@README
+readme.width=47
+readme.x=10
+readme.y=10
+target1.height=50
+target1.name=FirstCSVExample
+target1.showInterface=false
+target1.type=ClassTarget
+target1.typeParameters=
+target1.width=130
+target1.x=194
+target1.y=50
