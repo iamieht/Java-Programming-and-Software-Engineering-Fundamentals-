@@ -30,6 +30,15 @@ public class WhichCountriesExport {
         }
         return "NOT FOUND";
     }
+    public void listExportersTwoProducts(CSVParser parser, String exportItem1, String exportItem2) {
+        for(CSVRecord record : parser) {
+            String export = record.get("Exports");
+            if (export.contains(exportItem1) && export.contains(exportItem2)) {
+                String country = record.get("Country");
+                System.out.println(country);
+            }
+        }
+    }
     public void whoExportsCoffee() {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
@@ -40,5 +49,7 @@ public class WhichCountriesExport {
         CSVParser parser = fr.getCSVParser();
         String fullRecord = countryInfo(parser, "Germany");
         System.out.println(fullRecord);
+        parser = fr.getCSVParser();
+        listExportersTwoProducts(parser, "gold", "diamonds");
     }
 }
