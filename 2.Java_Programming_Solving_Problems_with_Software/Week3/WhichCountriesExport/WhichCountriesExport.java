@@ -66,13 +66,13 @@ public class WhichCountriesExport {
     public void tester() {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
-        String fullRecord = countryInfo(parser, "Germany");
-        System.out.println(fullRecord);
-        parser = fr.getCSVParser();
-        listExportersTwoProducts(parser, "gold", "diamonds");
-        parser = fr.getCSVParser();
-        System.out.println(numberOfExporters(parser, "gold"));
-        parser = fr.getCSVParser();
-        bigExporters(parser, "$999,999,999");
+        //String fullRecord = countryInfo(parser, "Nauru");
+        //System.out.println(fullRecord);
+        //parser = fr.getCSVParser();
+        //listExportersTwoProducts(parser, "fish", "nuts");
+        //parser = fr.getCSVParser();
+        //System.out.println(numberOfExporters(parser, "gold"));
+        //parser = fr.getCSVParser();
+        bigExporters(parser, "$999,999,999,999");
     }
 }
