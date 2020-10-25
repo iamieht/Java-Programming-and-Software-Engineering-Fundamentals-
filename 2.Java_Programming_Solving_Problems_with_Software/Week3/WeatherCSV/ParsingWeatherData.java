@@ -34,5 +34,12 @@ public class ParsingWeatherData {
         }
         return smallestSoFar;
     }
+    
+    public void testColdestHourInFile() {
+        FileResource fr = new FileResource();
+        CSVRecord coldest = coldestHourInFile(fr.getCSVParser());
+        System.out.println("coldest temperature was " + coldest.get("TemperatureF") +
+                            "F" + " at " + coldest.get("TimeEST"));
+    }
 
 }
