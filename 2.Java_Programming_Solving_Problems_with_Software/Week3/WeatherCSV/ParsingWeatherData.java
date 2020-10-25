@@ -76,7 +76,7 @@ public class ParsingWeatherData {
             String currentHumidity = currentRow.get("Humidity");
             String lowestHumidity = lowestHumiditySoFar.get("Humidity");
             
-            if (currentHumidity != "N/A" && lowestHumidity != "N/A") {
+            if (!currentHumidity.equals("N/A")) {
                 int currentHumidityTemp = Integer.parseInt(currentRow.get("Humidity"));
                 int lowestHumidityTemp = Integer.parseInt(lowestHumiditySoFar.get("Humidity"));
                 
