@@ -29,4 +29,12 @@ public class CSVMax {
         }
         return largestSoFar;
     }
+    
+    public void testHottestInDay () {
+        FileResource fr = new FileResource();
+        CSVRecord largest = hottestHourInFile(fr.getCSVParser());
+        System.out.println("hottest temperature was " + largest.get("TemperatureF") +
+                            " at " + largest.get("TimeEST"));
+    }
+    
 }
