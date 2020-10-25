@@ -99,6 +99,19 @@ public class ParsingWeatherData {
         }
         return lowestSoFar;
     }
+    
+    public Double averageTemperatureInFile(CSVParser parser) {
+        Double totalTemp = 0.0;
+        int numberOfRecords = 0;
+        for (CSVRecord record : parser) {
+            Double temp = Double.parseDouble(record.get("TemperatureF"));
+            if (temp != -9999) {
+                totalTemp += temp;
+                numberOfRecords++;
+            }
+        }
+        return totalTemp / numberOfRecords;
+    }
    
     public void testColdestHourInFile() {
         FileResource fr = new FileResource();
@@ -131,5 +144,12 @@ public class ParsingWeatherData {
         CSVRecord lowest = lowestHumidityInManyFiles();
         System.out.println("Lowest humidity was " + lowest.get("Humidity") +
                             " at " + lowest.get("DateUTC"));
+    }
+    
+    public void testAverageTemperatureInFile() {
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        Double averageTemp = averageTemperatureInFile(parser);
+        System.out.println("Average temperature in file is " + averageTemp);
     }
 }
