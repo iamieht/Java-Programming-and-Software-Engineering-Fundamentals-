@@ -48,8 +48,49 @@ public class BabyNames {
         System.out.println("Total boy names = " + totalBoyNames);
     }
     
+    public int getRank (int year, String name, String gender) {
+        String fname = "us_babynames/us_babynames_test/yob" + year + "short.csv";
+        FileResource fr = new FileResource(fname);
+        CSVParser parser = fr.getCSVParser(false);
+        int rank = -1;
+        int counterF = 0;
+        int counterM = 0;
+        
+        for (CSVRecord record : parser) {
+            if (record.get(1).equals("F")) {
+                counterF += 1;
+                if (record.get(0).equals(name) && record.get(1).equals(gender)) {
+                    rank = counterF;
+                    return rank;
+                }
+            }
+            else {
+                counterM += 1;
+                if (record.get(0).equals(name) && record.get(1).equals(gender)) {
+                    rank = counterM;
+                    return rank;
+                }
+            }    
+        
+        }
+        return rank;
+    }
+    
     public void testTotalBirths () {
         FileResource fr = new FileResource();
         totalBirths(fr);
+    }
+    
+    public void testGetRank() {
+        int rank = getRank(2012, "Sophia", "F");
+        System.out.println("The rank of Sophia (F) in 2012 is: " + rank);
+        rank = getRank(2012, "Isabella", "F");
+        System.out.println("The rank of Isabella (F) in 2012 is: " + rank);
+        rank = getRank(2012, "Noah", "M");
+        System.out.println("The rank of Noah (M) in 2012 is: " + rank);
+        rank = getRank(2012, "Mason", "M");
+        System.out.println("The rank of Mason (M) in 2012 is: " + rank);
+        rank = getRank(2012, "Mason", "F");
+        System.out.println("The rank of Mason (F) in 2012 is: " + rank);
     }
 }
