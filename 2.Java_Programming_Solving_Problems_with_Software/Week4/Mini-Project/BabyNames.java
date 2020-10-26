@@ -24,9 +24,11 @@ public class BabyNames {
         int totalBirths = 0;
         int totalBoys = 0;
         int totalGirls = 0;
+        int totalNames = 0;
         for (CSVRecord record : fr.getCSVParser(false)) {
             int numBorn = Integer.parseInt(record.get(2));
             totalBirths += numBorn;
+            totalNames += 1;
             if (record.get(1).equals("M")) {
                 totalBoys += numBorn;
             }
@@ -34,9 +36,10 @@ public class BabyNames {
                 totalGirls += numBorn;
             }
         }
-        System.out.println("total births = " + totalBirths);
-        System.out.println("total girls = " + totalGirls);
-        System.out.println("total boys = " + totalBoys);
+        System.out.println("Total births = " + totalBirths);
+        System.out.println("Total girls = " + totalGirls);
+        System.out.println("Total boys = " + totalBoys);
+        System.out.println("Total names = " + totalNames);
     }
     
     public void testTotalBirths () {
