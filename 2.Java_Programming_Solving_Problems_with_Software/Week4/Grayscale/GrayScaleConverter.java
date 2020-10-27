@@ -6,7 +6,7 @@
  * @version (a version number or a date)
  */
 import edu.duke.*;
-
+import java.io.*;
 public class GrayScaleConverter {
     
     public ImageResource makeGray(ImageResource inImage) {
@@ -23,6 +23,15 @@ public class GrayScaleConverter {
             pixel.setBlue(average);
         }
         return outImage;
+    }
+    
+    public void selectAndConvert() {
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()) {
+            ImageResource inImage = new ImageResource(f);
+            ImageResource gray = makeGray(inImage);
+            gray.draw();
+        }
     }
     
     public void testGray() {
