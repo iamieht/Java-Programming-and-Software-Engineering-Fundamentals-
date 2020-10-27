@@ -101,6 +101,14 @@ public class BabyNames {
         return "NO NAME";
     }
     
+    public void whatIsNameInYear(String name, int year, int newYear, String gender) {
+        int nameRank = getRank(year, name, gender);
+        String newName = getName(newYear, nameRank, gender);
+        
+        System.out.println(name + " born in " + year + " would be " + newName + 
+                            " if she was born in " + newYear);
+    }
+    
     public void testTotalBirths () {
         FileResource fr = new FileResource();
         totalBirths(fr);
@@ -126,5 +134,9 @@ public class BabyNames {
         System.out.println("The number 4 ranked male name in 2012 was: " + name);
         name = getName(2012, 6, "M");
         System.out.println("The number 6 ranked male name in 2012 was: " + name);
+    }
+    
+    public void testWhatIsNameInYear () {
+        whatIsNameInYear("Isabella", 2012, 2014, "F");
     }
 }
