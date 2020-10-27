@@ -118,7 +118,7 @@ public class BabyNames {
             String yearTemp = fname.substring(fname.indexOf("yob") + 3, fname.indexOf("yob") + 7);
             int year = Integer.parseInt(yearTemp);
             int currentRank = getRank(year, name, gender);
-            if (currentRank < highestRank) {
+            if (currentRank != -1 && currentRank < highestRank) {
                 highestRank = currentRank;
                 finalYear = year;
             }
@@ -163,45 +163,48 @@ public class BabyNames {
     }
     
     public void testGetRank() {
-        int rank = getRank(2012, "Sophia", "F");
-        System.out.println("The rank of Sophia (F) in 2012 is: " + rank);
-        rank = getRank(2012, "Isabella", "F");
-        System.out.println("The rank of Isabella (F) in 2012 is: " + rank);
-        rank = getRank(2012, "Noah", "M");
-        System.out.println("The rank of Noah (M) in 2012 is: " + rank);
-        rank = getRank(2012, "Mason", "M");
-        System.out.println("The rank of Mason (M) in 2012 is: " + rank);
-        rank = getRank(2012, "Mason", "F");
-        System.out.println("The rank of Mason (F) in 2012 is: " + rank);
+        int rank = getRank(1960, "Emily", "F");
+        System.out.println("The rank of Emily (F) in 1960 is: " + rank);
+        rank = getRank(1971, "Frank", "M");
+        System.out.println("The rank of Frank (M) in 1971 is: " + rank);
+        //rank = getRank(2012, "Noah", "M");
+        //System.out.println("The rank of Noah (M) in 2012 is: " + rank);
+        //rank = getRank(2012, "Mason", "M");
+        //System.out.println("The rank of Mason (M) in 2012 is: " + rank);
+        //rank = getRank(2012, "Mason", "F");
+        //System.out.println("The rank of Mason (F) in 2012 is: " + rank);
     }
     
     public void testGetName() {
-        String name = getName(2012, 1, "F");
-        System.out.println("The number 1 ranked female name in 2012 was: " + name);
-        name = getName(2012, 4, "M");
-        System.out.println("The number 4 ranked male name in 2012 was: " + name);
-        name = getName(2012, 6, "M");
-        System.out.println("The number 6 ranked male name in 2012 was: " + name);
+        String name = getName(1980, 350, "F");
+        System.out.println("The number 350 ranked female name in 1980 was: " + name);
+        name = getName(1982, 450, "M");
+        System.out.println("The number 450 ranked male name in 1982 was: " + name);
+        //name = getName(2012, 6, "M");
+        //System.out.println("The number 6 ranked male name in 2012 was: " + name);
     }
     
     public void testWhatIsNameInYear () {
-        whatIsNameInYear("Isabella", 2012, 2014, "F");
+        whatIsNameInYear("Susan", 1972, 2014, "F");
+        whatIsNameInYear("Owen", 1974, 2014, "M");
     }
     
     public void testYearOfHighestRank () {
-        int year = yearOfHighestRank("Mason", "M");
-        System.out.println("Year with Highest Rank for Mason (M) was: " + year);
+        //int year = yearOfHighestRank("Genevieve", "F");
+        //System.out.println("Year with Highest Rank for Genevieve (F) was: " + year);
+        int year = yearOfHighestRank("Mich", "M");
+        System.out.println("Year with Highest Rank for Mich (M) was: " + year);
     }
     
     public void testGetAverageRank () {
-        double avg = getAverageRank("Mason", "M");
-        System.out.println("Average Rank for Mason (M) is: " + avg);
-        avg = getAverageRank("Jacob", "M");
-        System.out.println("Average Rank for Jacob (M) is: " + avg);
+        double avg = getAverageRank("Robert", "M");
+        System.out.println("Average Rank for Robert (M) is: " + avg);
+        //avg = getAverageRank("Jacob", "M");
+        //System.out.println("Average Rank for Jacob (M) is: " + avg);
     }
     
     public void testGetTotalBirthsRankedHigher () {
-        int totalBirths = getTotalBirthsRankedHigher(2012, "Ethan", "M");
+        int totalBirths = getTotalBirthsRankedHigher(1990, "Drew", "M");
         System.out.println("Total Births: " + totalBirths);
     }
 }
