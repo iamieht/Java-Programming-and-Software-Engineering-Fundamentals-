@@ -109,6 +109,23 @@ public class BabyNames {
                             " if she was born in " + newYear);
     }
     
+    public int yearOfHighestRank(String name, String gender) {
+        int finalYear = -1;
+        int highestRank = 999999999;
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()) {
+            String fname = f.toString();
+            String yearTemp = fname.substring(fname.indexOf("yob") + 3, fname.indexOf("yob") + 7);
+            int year = Integer.parseInt(yearTemp);
+            int currentRank = getRank(year, name, gender);
+            if (currentRank < highestRank) {
+                highestRank = currentRank;
+                finalYear = year;
+            }
+        }
+        return finalYear;
+    }
+    
     public void testTotalBirths () {
         FileResource fr = new FileResource();
         totalBirths(fr);
@@ -138,5 +155,10 @@ public class BabyNames {
     
     public void testWhatIsNameInYear () {
         whatIsNameInYear("Isabella", 2012, 2014, "F");
+    }
+    
+    public void testYearOfHighestRank () {
+        int year = yearOfHighestRank("Mason", "M");
+        System.out.println("Year with Highest Rank for Mason (M) was: " + year);
     }
 }
