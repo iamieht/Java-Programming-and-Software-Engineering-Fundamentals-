@@ -2,6 +2,10 @@
 comment0.target=ImageConversion
 comment1.params=inImage
 comment1.target=edu.duke.ImageResource\ makeGray(edu.duke.ImageResource)
-comment2.params=
-comment2.target=void\ selectAndConvertGray()
-numComments=3
+comment2.params=inImage
+comment2.target=edu.duke.ImageResource\ makeInversion(edu.duke.ImageResource)
+comment3.params=
+comment3.target=void\ selectAndConvertGray()
+comment4.params=
+comment4.target=void\ selectAndConvertInversion()
+numComments=5
